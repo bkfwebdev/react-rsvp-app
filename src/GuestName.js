@@ -5,7 +5,7 @@ const GuestName = props => {
     if(props.isEditing){
         return (
             <input type="text" 
-            value={props.children}
+            value={props.name}
             onChange = {props.handleNameEdits}/>
         );
     }
