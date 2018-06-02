@@ -5,6 +5,7 @@ import GuestList from "./GuestList";
 class App extends Component {
 
   state = {
+    pendingGuest:"",
     isFiltered: false,
     guests:[
       {
@@ -20,12 +21,13 @@ class App extends Component {
       {
         name:"Baltasar",
         isConfirmed:true,
-        isEditing:true
+        isEditing:false
       }
     ]
   };
 
 getTotalInvited = () => this.state.guests.length;
+
 
 toggleGuestPropertyAt  =(property, indexToChange) => {
   this.setState({
@@ -61,9 +63,32 @@ toggleConfirmationAt = index => this.toggleGuestPropertyAt("isConfirmed",index);
 
 toggleEditingAt = index => this.toggleGuestPropertyAt("isEditing",index);
 
+removeGuestAt = index => this.setState({
+    guests:[
+      ...this.state.guests.slice(0,index),
+      ...this.state.guests.slice(index + 1)
+    ]
+})
+
 toggleFilter = () => this.setState({isFiltered: !this.state.isFiltered});
 
+handleNameInput = e => this.setState({pendingGuest: e.target.value});
 
+newGuestSubmitHandler = e => {
+  e.preventDefault();
+  this.setState ({
+    guests:[
+      {
+        name:this.state.pendingGuest,
+        isConfirmed:false,
+        isEditing:false
+      },
+      ...this.state.guests
+    
+    ],
+    pendingGuest:""
+  });
+}
 
   render() {
     return (
@@ -71,8 +96,10 @@ toggleFilter = () => this.setState({isFiltered: !this.state.isFiltered});
       <header>
         <h1>RSVP</h1>
         <p>A BKFWEBDEV App</p>
-        <form>
-            <input type="text" value="Safia" placeholder="Invite Someone" />
+        <form onSubmit = {this.newGuestSubmitHandler}>
+            <input type="text" onChange = {this.handleNameInput}
+            value = {this.state.pendingGuest}
+            placeholder= "invite someone" />
             <button type="submit" name="submit" value="submit">Submit</button>
         </form>
       </header>
@@ -107,6 +134,7 @@ toggleFilter = () => this.setState({isFiltered: !this.state.isFiltered});
        toggleEditingAt = {this.toggleEditingAt}
        setNameAt = {this.setNameAt}
        isFiltered = {this.state.isFiltered}
+       removeGuestAt = {this.removeGuestAt}
        />
       </div>
     </div>

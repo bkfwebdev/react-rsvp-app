@@ -11,18 +11,19 @@ const Guest = props =>
     <input type="checkbox" checked = {props.isConfirmed} onChange ={props.handleConfirmation}/> Confirmed
   </label>
   <button onClick = {props.handleToggleEditing}>edit</button>
-  <button>remove</button>
+  <button onClick = {props.handleRemove}>remove</button>
 </li>;
 
 
 
 Guest.propTypes = {
     name: PropTypes.string.isRequired,
-    isConfirmed: PropTypes.bool.isRequired,
+    isConfirmed:PropTypes.bool.isRequired,
     isEditing:PropTypes.bool.isRequired,
-    handleConfirmation: PropTypes.func.isRequired,
-    handleToggleEditing: PropTypes.func.isRequired,
-    setName: PropTypes.func.isRequired
+    handleConfirmation:PropTypes.func.isRequired,
+    handleToggleEditing:PropTypes.func.isRequired,
+    setName:PropTypes.func.isRequired,
+    handleRemove:PropTypes.func.isRequired
   }
 
 export default Guest;
