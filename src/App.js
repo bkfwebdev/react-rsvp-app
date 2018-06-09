@@ -99,7 +99,7 @@ newGuestSubmitHandler = e => {
     return (
       <div className="App">
       <header>
-        <h1>RSVP</h1>
+        <h1>SUPYO!</h1>
         <p>A BKFWEBDEV App</p>
         <form onSubmit = {this.newGuestSubmitHandler}>
             <input type="text" onChange = {this.handleNameInput}
