@@ -108,7 +108,7 @@ newGuestSubmitHandler = e => {
             <button type="submit" name="submit" value="submit">Submit</button>
         </form>
       </header>
-      <div className="main">
+      <div className ="main">
         <div>
           <h2>Invitees</h2>
           <label>
@@ -118,7 +118,7 @@ newGuestSubmitHandler = e => {
           </label>
         </div>
         <Counter totalInvited = {totalInvited} numberAttending = {numberAttending} numberUnconfirmed = {numberUnconfirmed}/>
-       <GuestList 
+       <GuestList
        guests = {this.state.guests}
        toggleConfirmationAt ={this.toggleConfirmationAt}
        toggleEditingAt = {this.toggleEditingAt}
